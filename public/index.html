@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deal Map</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Input Screen -->
+  <div id="input-screen" class="screen">
+    <div class="input-card">
+      <div class="logo-mark">◈</div>
+      <h1>Deal Map</h1>
+      <p class="tagline">AI-powered strategic account intelligence — in seconds.</p>
+
+      <form id="generate-form">
+        <div class="field">
+          <label for="company-name">Target Company</label>
+          <input
+            id="company-name"
+            type="text"
+            placeholder="e.g. Salesforce, Nike, JPMorgan Chase"
+            autocomplete="off"
+            required
+          />
+        </div>
+
+        <div class="field">
+          <label for="product-desc">What do you sell?</label>
+          <textarea
+            id="product-desc"
+            placeholder="e.g. A sales coaching platform that uses AI to analyze rep calls and recommend next-best actions."
+            rows="3"
+            required
+          ></textarea>
+        </div>
+
+        <button type="submit" id="generate-btn">
+          <span class="btn-text">Generate Deal Map</span>
+          <span class="btn-spinner" hidden>
+            <span class="spinner"></span> Researching...
+          </span>
+        </button>
+
+        <p id="error-msg" class="error-msg" hidden></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Deal Map Screen -->
+  <div id="map-screen" class="screen" hidden>
+    <div class="map-header">
+      <div class="map-header-left">
+        <span class="logo-mark small">◈</span>
+        <div>
+          <h2 id="map-company-name"></h2>
+          <p class="map-subtitle">Deal Map · <span id="map-date"></span></p>
+        </div>
+      </div>
+      <div class="map-header-right">
+        <button id="new-map-btn" class="btn-secondary">New Map</button>
+        <button id="print-btn" class="btn-primary">Export / Print</button>
+      </div>
+    </div>
+
+    <div class="edit-hint">Click any cell to edit</div>
+
+    <div class="deal-grid">
+      <!-- Row 1 -->
+      <div class="grid-card accent-blue" id="card-exec">
+        <div class="card-header">
+          <span class="card-icon">🎯</span>
+          <div>
+            <div class="card-title">Executive Priorities</div>
+            <div class="card-subtitle">What the C-suite is focused on this fiscal</div>
+          </div>
+        </div>
+        <ul class="card-list" id="list-exec-items" contenteditable="true"></ul>
+        <div class="card-note" id="note-exec"></div>
+      </div>
+
+      <div class="grid-card accent-yellow" id="card-financial">
+        <div class="card-header">
+          <span class="card-icon">📊</span>
+          <div>
+            <div class="card-title">Financial Metrics</div>
+            <div class="card-subtitle">Revenue, margins, momentum & pain</div>
+          </div>
+        </div>
+        <div class="dual-list">
+          <div>
+            <div class="list-label green">Opportunities</div>
+            <ul class="card-list" id="list-fin-opp" contenteditable="true"></ul>
+          </div>
+          <div>
+            <div class="list-label red">Risks</div>
+            <ul class="card-list" id="list-fin-risk" contenteditable="true"></ul>
+          </div>
+        </div>
+        <div class="card-note" id="note-financial"></div>
+      </div>
+
+      <div class="grid-card accent-red" id="card-challenges">
+        <div class="card-header">
+          <span class="card-icon">⚡</span>
+          <div>
+            <div class="card-title">Challenges & Trends</div>
+            <div class="card-subtitle">Tension layer — what's at stake</div>
+          </div>
+        </div>
+        <ul class="card-list" id="list-challenges" contenteditable="true"></ul>
+        <div class="card-note" id="note-challenges"></div>
+      </div>
+
+      <!-- Row 2 -->
+      <div class="grid-card accent-purple" id="card-initiatives">
+        <div class="card-header">
+          <span class="card-icon">🚀</span>
+          <div>
+            <div class="card-title">Strategic Initiatives</div>
+            <div class="card-subtitle">Big moves & board-mandated outcomes</div>
+          </div>
+        </div>
+        <ul class="card-list" id="list-initiatives" contenteditable="true"></ul>
+        <div class="card-note" id="note-initiatives"></div>
+      </div>
+
+      <div class="grid-card accent-green" id="card-outcomes">
+        <div class="card-header">
+          <span class="card-icon">✦</span>
+          <div>
+            <div class="card-title">Desired Outcomes</div>
+            <div class="card-subtitle">The "why" behind their decisions</div>
+          </div>
+        </div>
+        <ul class="card-list" id="list-outcomes" contenteditable="true"></ul>
+        <div class="card-note" id="note-outcomes"></div>
+      </div>
+
+      <div class="grid-card accent-teal" id="card-solution">
+        <div class="card-header">
+          <span class="card-icon">🔗</span>
+          <div>
+            <div class="card-title">Solution Fit</div>
+            <div class="card-subtitle">Where your offer intersects their world</div>
+          </div>
+        </div>
+        <ul class="card-list" id="list-solution" contenteditable="true"></ul>
+        <div class="card-note" id="note-solution"></div>
+      </div>
+
+      <!-- Row 3 - full width -->
+      <div class="grid-card accent-dark span-full" id="card-next">
+        <div class="card-header">
+          <span class="card-icon">→</span>
+          <div>
+            <div class="card-title">Next Moves</div>
+            <div class="card-subtitle">Gaps to close &amp; actions to take</div>
+          </div>
+        </div>
+        <div class="dual-list">
+          <div>
+            <div class="list-label orange">Gaps</div>
+            <ul class="card-list" id="list-next-gaps" contenteditable="true"></ul>
+          </div>
+          <div>
+            <div class="list-label blue">Actions</div>
+            <ul class="card-list" id="list-next-actions" contenteditable="true"></ul>
+          </div>
+        </div>
+        <div class="card-note" id="note-next"></div>
+      </div>
+    </div>
+
+    <div class="map-footer">
+      Generated with Deal Map · AI-assisted account intelligence
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
