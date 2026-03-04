@@ -1,6 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
 
 export function middleware(req: NextRequest) {
+  // Skip auth in local development
+  if (process.env.NODE_ENV === 'development') {
+    return NextResponse.next()
+  }
+
   const authHeader = req.headers.get('authorization')
 
   if (authHeader) {
