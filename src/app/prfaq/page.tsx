@@ -40,6 +40,7 @@ interface Phase1Data {
 }
 
 interface Phase2Data {
+  [key: string]: string
   companyName: string
   productService: string
   targetCustomer: string
