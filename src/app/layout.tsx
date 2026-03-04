@@ -16,7 +16,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="bg-slate-50 min-h-screen">
         <Sidebar />
-        <main className="ml-60 min-h-screen">
+        <main className="md:ml-60 pt-14 md:pt-0 min-h-screen">
           <div className="max-w-7xl mx-auto px-6 py-8">
             {children}
           </div>
