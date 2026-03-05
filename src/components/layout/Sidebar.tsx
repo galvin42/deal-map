@@ -17,6 +17,7 @@ import {
   ClipboardList,
   Target,
   Newspaper,
+  Gauge,
   ChevronRight,
   Zap,
   Menu,
@@ -88,6 +89,14 @@ const navItems = [
     description: '7-stage buying behavior',
     color: 'text-amber-500',
     activeBg: 'bg-amber-500/10',
+  },
+  {
+    label: 'Deal Review',
+    href: '/deal-review',
+    icon: Gauge,
+    description: '60-second forecast check',
+    color: 'text-orange-500',
+    activeBg: 'bg-orange-500/10',
   },
   {
     label: 'Value Story',
