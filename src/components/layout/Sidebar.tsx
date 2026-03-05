@@ -19,6 +19,7 @@ import {
   Newspaper,
   Gauge,
   ShieldCheck,
+  ShieldAlert,
   ChevronRight,
   Zap,
   Menu,
@@ -58,6 +59,14 @@ const navItems = [
     description: 'AI deal qualification',
     color: 'text-blue-500',
     activeBg: 'bg-blue-500/10',
+  },
+  {
+    label: 'Objection Handler',
+    href: '/objection-handler',
+    icon: ShieldAlert,
+    description: '3 responses, any objection',
+    color: 'text-red-500',
+    activeBg: 'bg-red-500/10',
   },
   {
     label: 'Discovery Discipline',
