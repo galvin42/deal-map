@@ -718,7 +718,7 @@ function FeedPanel({
       if (data.error) { setError(data.error); return }
       setResult(data)
       // Pre-accept all non-conflict extractions
-      const preAccepted = new Set(data.extractions.filter((e: Extraction) => e.type !== 'conflict').map((e: Extraction) => e.element))
+      const preAccepted = new Set<string>(data.extractions.filter((e: Extraction) => e.type !== 'conflict').map((e: Extraction) => e.element))
       setAccepted(preAccepted)
     } catch {
       setError('Network error. Please try again.')
