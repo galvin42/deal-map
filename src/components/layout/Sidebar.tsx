@@ -52,7 +52,7 @@ const navItems = [
     activeBg: 'bg-rose-500/10',
   },
   {
-    label: 'MEDDICC Qualifier',
+    label: 'MEDDICC',
     href: '/meddicc',
     icon: ShieldCheck,
     description: 'AI deal qualification',

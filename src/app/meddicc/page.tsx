@@ -1118,7 +1118,7 @@ export default function MeddiccPage() {
             <ShieldCheck size={20} className="text-white" />
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-slate-900">MEDDICC Qualifier</h1>
+            <h1 className="text-2xl font-bold text-slate-900">MEDDICC</h1>
             <p className="text-sm text-slate-500">AI-powered deal qualification in under 60 seconds</p>
           </div>
         </div>
