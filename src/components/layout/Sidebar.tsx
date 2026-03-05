@@ -18,6 +18,7 @@ import {
   Target,
   Newspaper,
   Gauge,
+  ShieldCheck,
   ChevronRight,
   Zap,
   Menu,
@@ -49,6 +50,14 @@ const navItems = [
     description: 'Account brief & agenda',
     color: 'text-rose-500',
     activeBg: 'bg-rose-500/10',
+  },
+  {
+    label: 'MEDDICC Qualifier',
+    href: '/meddicc',
+    icon: ShieldCheck,
+    description: 'AI deal qualification',
+    color: 'text-blue-500',
+    activeBg: 'bg-blue-500/10',
   },
   {
     label: 'Discovery Discipline',
